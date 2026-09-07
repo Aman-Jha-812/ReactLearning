@@ -1,0 +1,32 @@
+
+
+.card{
+  height: auto;
+  width:300px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: lightseagreen;
+  font-size: 20px;
+}
+.layout{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+
+}
+
+.information{
+
+  height: auto;
+  width:300px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: aqua;
+  font-size: 20px;
+}
+.button button {
+  background-color: #2563eb; /* Blue color */
+  color: white;              /* White text */
+  padding: 10px 20px;        /* Size */
+  border-radius: 6px;        /* Rounded corners */
+}
