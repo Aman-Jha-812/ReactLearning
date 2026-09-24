@@ -1,30 +1,50 @@
-import { useState } from "react";
-import "./App.css";
+import { useState } from 'react'; 
+import './App.css'; 
+import data from './notes/data'; 
 
 function App() {
-  const [fruits, setFruits] = useState("");
+  console.log(data);
+  const [selectedCountry, setSelectedCountry] = useState(""); // 
+  const [selectedCity, setSelectedCity] = useState(""); 
 
-  const fruit = ["apple","banana","blackberry","Avacado"];
-
-  console.log(fruits);
+  console.log(selectedCountry, selectedCity);
 
   return (
     <div className="select-none">
+      {/* Country Dropdown */}
       <select
-        defaultValue={fruits}
+        value={selectedCountry}
         onChange={(e) => {
-          setFruits(e.target.value);
+          setSelectedCountry(e.target.value);
+          setSelectedCity(""); // Crucial: Reset city when country changes
         }}
       >
         <option value="">---Select below---</option>
-        {fruit.map((item)=>{
-          return(
-            <option key={item} value={item}>{item}</option>
-          )
-          
+        {Object.keys(data).map((item) => {
+          return (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          );
         })}
-        
       </select>
+
+      {/* City Dropdown */}
+      {selectedCountry && (
+        <select
+          value={selectedCity} 
+          onChange={(e) => setSelectedCity(e.target.value)} 
+        >
+          <option value="">---Select city---</option>
+          {data[selectedCountry].map((item) => {
+            return (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
+      )}
     </div>
   );
 }
